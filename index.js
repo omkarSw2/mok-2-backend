@@ -14,7 +14,7 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, (req, res) => {
+app.listen(process.env.PORT || 3000, (req, res) => {
   try {
     conntection;
     console.log("Connected");
