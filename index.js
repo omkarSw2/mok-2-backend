@@ -14,9 +14,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, (req, res) => {
+app.listen(process.env.PORT || 3000, async (req, res) => {
   try {
-    connection;
+    await connection;
     console.log("Connected");
   } catch (error) {
     res.status(500).send({ msg: "Internal error", error: error.message });
