@@ -1,8 +1,9 @@
 const express = require("express");
-const app = express();
-const cors = require("cors");
-const { connection } = require("./db");
+const { conntection } = require("./db");
 
+require("dotenv").config;
+const cors = require("cors");
+const app = express();
 app.use(cors());
 app.use(express.json());
 
@@ -14,9 +15,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, async (req, res) => {
+app.listen(process.env.PORT, (req, res) => {
   try {
-    await connection;
+    conntection;
     console.log("Connected");
   } catch (error) {
     res.status(500).send({ msg: "Internal error", error: error.message });
