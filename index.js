@@ -4,6 +4,7 @@ const { conntection } = require("./db");
 require("dotenv").config;
 const cors = require("cors");
 const { UserRoute } = require("./routes/userRoutes");
+const { DoctorsRoute } = require("./routes/DoctoresRoute");
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -18,6 +19,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/users", UserRoute);
+app.use("/doctors", DoctorsRoute);
 
 app.listen(process.env.PORT, (req, res) => {
   try {

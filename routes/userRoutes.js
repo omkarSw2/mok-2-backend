@@ -1,5 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
+var jwt = require("jsonwebtoken");
+
 const { UserModel } = require("../model/user.Model.");
 
 const UserRoute = express.Router();
@@ -33,7 +35,9 @@ UserRoute.post("/login", async (req, res) => {
     } else {
       bcrypt.compare(password, finduser.password, async (err, result) => {
         if (result) {
-          res.status(200).send({ message: "Welcome user" });
+          var token = jwt.sign({ foo: "bar" }, "omkar");
+
+          res.status(200).send({ message: "Welcome user", token });
         }
         if (err) {
           res.status(200).send({ message: "Error ", err });
