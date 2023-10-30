@@ -12,3 +12,5 @@ const eventsSchema = mongoose.Schema({
 
 const EventModel = mongoose.model("event", eventsSchema);
 module.exports = { EventModel };
+
+// mok-5
