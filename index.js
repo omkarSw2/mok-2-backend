@@ -8,6 +8,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", async (req, res) => {
+  try {
+    return res.status(200).send({ msg: "get data" });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ msg: error.message });
+  }
+});
+
 app.use("/users", UserRoute);
 
 app.listen(process.env.PORT, (req, res) => {
