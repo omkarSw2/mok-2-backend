@@ -18,5 +18,5 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.5.2",
     "supervisor": "^0.12.0"
-  }
+  } 
 }
