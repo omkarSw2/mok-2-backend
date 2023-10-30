@@ -11,7 +11,15 @@ app.use(express.json());
 
 app.get("/", async (req, res) => {
   try {
-    return res.status(200).send({ msg: "get data" });
+    return res.status(200).send({
+      msg: "get Doctors appointment  data https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/ ",
+      login: "http://localhost:8080/users/login",
+      Signup: "http://localhost:8080/users/signup",
+
+      getDoctores_Data: "https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/",
+      adappointments_Data:
+        "https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/adappointments",
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ msg: error.message });
