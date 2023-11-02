@@ -3,8 +3,9 @@ const { conntection } = require("./db");
 
 require("dotenv").config;
 const cors = require("cors");
-const { UserRoute } = require("./routes/userRoutes");
-const { DoctorsRoute } = require("./routes/DoctoresRoute");
+const { BorderRoute } = require("./routes/BorderRoutes");
+const { TaskRoute } = require("./routes/TaskRoute");
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -12,22 +13,15 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     return res.status(200).send({
-      msg: "get Doctors appointment  data https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/ ",
-      login: "http://localhost:8080/users/login",
-      Signup: "http://localhost:8080/users/signup",
-
-      getDoctores_Data: "https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/",
-      adappointments_Data:
-        "https://drab-pink-rhinoceros-cuff.cyclic.app/doctors/adappointments",
+      msg: "server is runing ",
     });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ msg: error.message });
   }
 });
-
-app.use("/users", UserRoute);
-app.use("/doctors", DoctorsRoute);
+app.use("/board", BorderRoute);
+app.use("/task", TaskRoute);
 
 app.listen(process.env.PORT, (req, res) => {
   try {
