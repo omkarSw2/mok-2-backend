@@ -5,20 +5,11 @@ require("dotenv").config;
 const cors = require("cors");
 const { UserRoute } = require("./routes/user.Route");
 
-
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 app.use("/", UserRoute);
-
-
-
-
-
-
-
 
 app.listen(process.env.PORT, (req, res) => {
   try {
