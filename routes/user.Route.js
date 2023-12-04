@@ -45,6 +45,19 @@ UserRoute.delete("/delete/:_id", async (req, res) => {
     res.status(400).send({ status: "failed", mgs: "Something Went Wrong" });
   }
 });
+UserRoute.get("/search", async (req, res) => {
+  const search = req.query.q;
+  try {
+    const users = await UserModel.find({
+      name: { $regex: new RegExp(search, "i") },
+    });
+
+    res.status(200).send({ status: "success", msg: "Users found", users });
+  } catch (error) {
+    res.status(400).send({ status: "failed", msg: "Something went wrong" });
+  }
+});
+
 
 module.exports = { UserRoute };
 
