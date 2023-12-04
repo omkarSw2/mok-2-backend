@@ -20,8 +20,7 @@ app.get("/", async (req, res) => {
     return res.status(400).send({ msg: error.message });
   }
 });
-app.use("/board", BorderRoute);
-app.use("/task", TaskRoute);
+
 
 app.listen(process.env.PORT, (req, res) => {
   try {
