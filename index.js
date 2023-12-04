@@ -3,6 +3,7 @@ const { conntection } = require("./db");
 
 require("dotenv").config;
 const cors = require("cors");
+const { UserRoute } = require("./routes/user.Route");
 
 
 const app = express();
@@ -10,17 +11,13 @@ app.use(cors());
 app.use(express.json());
 
 
+app.use("/", UserRoute);
 
-app.get("/", async (req, res) => {
-  try {
-    return res.status(200).send({
-      msg: "server is runing ",
-    });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ msg: error.message });
-  }
-});
+
+
+
+
+
 
 
 app.listen(process.env.PORT, (req, res) => {
