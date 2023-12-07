@@ -12,7 +12,7 @@ UserRoute.post("/register", async (req, res) => {
   try {
     const userExist = await UserModel.findOne({ email });
     if (userExist) {
-      return res.status(200).send({
+      return res.status(400).send({
         status: false,
         msg: "User Alredy Exist Please Login ",
       });
